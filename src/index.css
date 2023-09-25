@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .grow-underline {
+    @apply block relative py-[0.2em] overflow-hidden;
+  }
+  .grow-underline::after {
+    @apply content-[''] bg-red-600 h-[0.15em] w-0 left-0 bottom-0 absolute duration-500;
+  }
+  .grow-underline:hover::after {
+    @apply w-full;
+  }
+}
+.bg-secondary {
+  @apply bg-[#F4F2ED]
+}
+
+.sectionSize {
+  @apply flex items-center px-[1rem] py-[3.5rem] md:px-[3rem] lg:px-[12rem] md:justify-between md:items-center justify-center text-center md:text-left
+}
+
+.secondaryTitle {
+  @apply bg-left-bottom bg-no-repeat font-serif text-[1.875rem] leading-[2.25rem] mb-8 px-16 pb-8 mx-auto
+}
+
+.inSectionTitle{
+  @apply bg-left-bottom bg-no-repeat font-serif text-[1.875rem] leading-[2.25rem] px-16 pb-4 mx-auto
+}
+
+.faqSection {
+  @apply flex items-start px-[1rem] py-[3.5rem] md:px-[3rem] lg:px-[12rem] md:justify-between justify-center text-center md:text-left
+}
+
+.faqSecondaryTitle {
+  @apply font-serif text-[1.875rem] leading-[2.25rem] pb-8 mx-auto
+}
+
