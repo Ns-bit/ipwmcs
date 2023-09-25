@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Membership = ({ isSelected, toggleFormVisibility }) => {
+  const [forgotPassword, setForgotPassword] = useState(false);
+
   return (
     <section
       id="membership"
@@ -26,7 +28,7 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                 isSelected ? 'ml-[-50%]' : 'ml-[0%]'
               }`}
             >
-              Login
+              {forgotPassword ? 'Reset Password' : 'Login'}
             </div>
             <div className="w-1/2 text-4xl font-semibold text-center transition-all duration-500 ease-in-out">
               Signup
@@ -58,7 +60,7 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                     : 'w-1/2 bg-gradient-to-r from-blue-700 to-blue-500 rounded-[15px] transition-all ease-in-out text-[#fff]'
                 }`}
               >
-                Login
+                {forgotPassword ? 'Reset Password' : 'Login'}
               </label>
               <label
                 htmlFor="signup"
@@ -72,55 +74,103 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
               </label>
             </div>
             <div className="flex w-[200%]">
-              {/* Login form */}
-              <form
-                action="#"
-                className={`w-1/2 transition-all duration-500 ease-in-out my-auto ${
-                  isSelected ? 'ml-[-50%]' : 'ml-[0%]'
-                }`}
-              >
-                <div className="h-[50px] w-full mt-5">
-                  <input
-                    className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
-                    type="email"
-                    placeholder="Email Address"
-                    required
-                  />
-                </div>
-                <div className="h-[50px] w-full mt-5">
-                  <input
-                    className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
-                    type="password"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-                <div className="mt-[10px] ">
-                  <a
-                    className="text-[#1a75ff] no-underline hover:underline"
-                    href="£"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-                <div className="h-[50px] w-full mt-5 rounded-[15px] relative overflow-hidden">
-                  <div className="h-full w-[300%] bg-gradient-to-r from-blue-700 via-blue-800 to-blue-500 absolute left-[-100%] hover:left-0 rounded-[15px] transition-all ease-in-out duration-[400ms]"></div>
-                  <input
-                    className="w-full h-full z-[1] relative bg-none border-none text-[#fff] pl-0 rounded-[15px] text-xl font-medium cursor-pointer"
-                    type="submit"
-                    value="Log me in"
-                  />
-                </div>
-                <div className="text-center mt-[30px]">
-                  Not a member?{' '}
-                  <span
-                    onClick={() => toggleFormVisibility(true)}
-                    className="text-[#1a75ff] no-underline cursor-pointer hover:underline"
-                  >
-                    Signup now
-                  </span>
-                </div>
-              </form>
+              {/* Login and forgot password forms */}
+              {forgotPassword ? (
+                <form
+                  action="#"
+                  className={`w-1/2 transition-all duration-500 ease-in-out my-auto ${
+                    isSelected ? 'ml-[-50%]' : 'ml-[0%]'
+                  }`}
+                >
+                  <div className="h-[50px] w-full ">
+                    <input
+                      className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
+                      type="email"
+                      placeholder="Email Address"
+                      required
+                    />
+                  </div>
+                  <div className="h-[50px] w-full mt-10 rounded-[15px] relative overflow-hidden">
+                    <div className="h-full w-[300%] bg-gradient-to-r from-blue-700 via-blue-800 to-blue-500 absolute left-[-100%] hover:left-0 rounded-[15px] transition-all ease-in-out duration-[400ms]"></div>
+                    <input
+                      className="w-full h-full z-[1] relative bg-none border-none text-[#fff] pl-0 rounded-[15px] text-xl font-medium cursor-pointer"
+                      type="submit"
+                      value="Send Reset Email"
+                    />
+                  </div>
+                  <div className="text-center mt-[30px]">
+                    Not a member?{' '}
+                    <span
+                      onClick={() => toggleFormVisibility(true)}
+                      className="text-red-500 no-underline cursor-pointer hover:underline"
+                    >
+                      Signup now
+                    </span>
+                  </div>
+                  <div className="text-center mt-[10px]">
+                    <span
+                      onClick={() =>
+                        setForgotPassword((prevState) => !prevState)
+                      }
+                      className="text-[#1a75ff] no-underline cursor-pointer hover:underline"
+                    >
+                      Log in instead
+                    </span>
+                  </div>
+                </form>
+              ) : (
+                <form
+                  action="#"
+                  className={`w-1/2 transition-all duration-500 ease-in-out my-auto ${
+                    isSelected ? 'ml-[-50%]' : 'ml-[0%]'
+                  }`}
+                >
+                  <div className="h-[50px] w-full mt-5">
+                    <input
+                      className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
+                      type="email"
+                      placeholder="Email Address"
+                      required
+                    />
+                  </div>
+                  <div className="h-[50px] w-full mt-5">
+                    <input
+                      className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
+                      type="password"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div className="mt-[10px] ">
+                    <span
+                      onClick={() =>
+                        setForgotPassword((prevState) => !prevState)
+                      }
+                      className="text-red-500 no-underline cursor-pointer hover:underline"
+                    >
+                      Forgot password?
+                    </span>
+                  </div>
+                  <div className="h-[50px] w-full mt-5 rounded-[15px] relative overflow-hidden">
+                    <div className="h-full w-[300%] bg-gradient-to-r from-blue-700 via-blue-800 to-blue-500 absolute left-[-100%] hover:left-0 rounded-[15px] transition-all ease-in-out duration-[400ms]"></div>
+                    <input
+                      className="w-full h-full z-[1] relative bg-none border-none text-[#fff] pl-0 rounded-[15px] text-xl font-medium cursor-pointer"
+                      type="submit"
+                      value="Log me in"
+                    />
+                  </div>
+                  <div className="text-center mt-[30px]">
+                    Not a member?{' '}
+                    <span
+                      onClick={() => toggleFormVisibility(true)}
+                      className="text-red-500 no-underline cursor-pointer hover:underline"
+                    >
+                      Signup now
+                    </span>
+                  </div>
+                </form>
+              )}
+
               {/* Signup form */}
               <form
                 action="#"
