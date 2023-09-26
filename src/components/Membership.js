@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import OAuth from './OAuth';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 const Membership = ({ isSelected, toggleFormVisibility }) => {
   const [forgotPassword, setForgotPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <section
@@ -74,8 +76,9 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                 Signup
               </label>
             </div>
+            {/* Login and forgot password forms */}
             <div className="flex w-[200%]">
-              {/* Login and forgot password forms */}
+              {/* Forgot Password form */}
               {forgotPassword ? (
                 <form
                   action="#"
@@ -124,6 +127,7 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                   <OAuth />
                 </form>
               ) : (
+                // Log In form
                 <form
                   action="#"
                   className={`w-1/2 transition-all duration-500 ease-in-out my-auto ${
@@ -138,13 +142,28 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                       required
                     />
                   </div>
-                  <div className="h-[50px] w-full mt-5">
+                  <div className="h-[50px] w-full mt-5 relative">
                     <input
                       className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
-                      type="password"
+                      type={showPassword ? 'text' : 'password'}
                       placeholder="Password"
                       required
                     />
+                    {showPassword ? (
+                      <AiFillEyeInvisible
+                        className="absolute right-3 top-4 text-xl cursor-pointer"
+                        onClick={() =>
+                          setShowPassword((prevState) => !prevState)
+                        }
+                      />
+                    ) : (
+                      <AiFillEye
+                        className="absolute right-3 top-4 text-xl cursor-pointer"
+                        onClick={() =>
+                          setShowPassword((prevState) => !prevState)
+                        }
+                      />
+                    )}
                   </div>
                   <div className="mt-[10px] ">
                     <span
@@ -210,21 +229,51 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                     required
                   />
                 </div>
-                <div className="h-[50px] w-full mt-5">
+                <div className="h-[50px] w-full mt-5 relative">
                   <input
                     className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="Password"
                     required
                   />
+                  {showPassword ? (
+                      <AiFillEyeInvisible
+                        className="absolute right-3 top-4 text-xl cursor-pointer"
+                        onClick={() =>
+                          setShowPassword(false)
+                        }
+                      />
+                    ) : (
+                      <AiFillEye
+                        className="absolute right-3 top-4 text-xl cursor-pointer"
+                        onClick={() =>
+                          setShowPassword(true)
+                        }
+                      />
+                    )}
                 </div>
-                <div className="h-[50px] w-full mt-5">
+                <div className="h-[50px] w-full mt-5 relative">
                   <input
                     className="h-full w-full outline-none pl-[15px] rounded-[15px] border border-gray-300 border-b-2 text-[17px] focus:border-[#1a75ff] placeholder:text-[#999] placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out focus:placeholder:text-[#1a75ff] transition-all ease-in-out duration-500"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="Confirm password"
                     required
                   />
+                  {showPassword ? (
+                      <AiFillEyeInvisible
+                        className="absolute right-3 top-4 text-xl cursor-pointer"
+                        onClick={() =>
+                          setShowPassword((prevState) => !prevState)
+                        }
+                      />
+                    ) : (
+                      <AiFillEye
+                        className="absolute right-3 top-4 text-xl cursor-pointer"
+                        onClick={() =>
+                          setShowPassword((prevState) => !prevState)
+                        }
+                      />
+                    )}
                 </div>
                 <div className="h-[50px] w-full mt-5 rounded-[15px] relative overflow-hidden">
                   <div className="h-full w-[300%] bg-gradient-to-r from-blue-700 via-blue-800 to-blue-500 absolute left-[-100%] hover:left-0 rounded-[15px] transition-all ease-in-out duration-[400ms]"></div>
