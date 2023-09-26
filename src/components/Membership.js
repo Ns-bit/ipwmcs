@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import OAuth from './OAuth';
 
 const Membership = ({ isSelected, toggleFormVisibility }) => {
   const [forgotPassword, setForgotPassword] = useState(false);
@@ -25,7 +26,7 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
           <div className="flex w-[200%]">
             <div
               className={`w-1/2 text-4xl font-semibold text-center transition-all duration-500 ease-in-out ${
-                isSelected ? 'ml-[-50%]' : 'ml-[0%]'
+                isSelected ? 'ml-[-51%]' : 'ml-[0%]'
               }`}
             >
               {forgotPassword ? 'Reset Password' : 'Login'}
@@ -117,6 +118,10 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                       Log in instead
                     </span>
                   </div>
+                  <div className="flex items-center  my-4 before:border-t before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300">
+                    <p className="text-center font-semibold mx-4">OR</p>
+                  </div>
+                  <OAuth />
                 </form>
               ) : (
                 <form
@@ -168,6 +173,10 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                       Signup now
                     </span>
                   </div>
+                  <div className="flex items-center  my-4 before:border-t before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300">
+                    <p className="text-center font-semibold mx-4">OR</p>
+                  </div>
+                  <OAuth />
                 </form>
               )}
 
@@ -225,6 +234,10 @@ const Membership = ({ isSelected, toggleFormVisibility }) => {
                     value="Sign me up"
                   />
                 </div>
+                <div className="flex items-center  my-4 before:border-t before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300">
+                  <p className="text-center font-semibold mx-4">OR</p>
+                </div>
+                <OAuth />
               </form>
             </div>
           </div>
