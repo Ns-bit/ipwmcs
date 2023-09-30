@@ -70,9 +70,6 @@ const NavigationBar = (props) => {
             </div>
           </li>
           <li className="grow-underline mx-3">
-            <a href="£">News and Updates</a>
-          </li>
-          <li className="grow-underline mx-3">
             <div
               className="cursor-pointer"
               onClick={() => props.handleLinkClick('faq')}
@@ -127,9 +124,6 @@ const NavigationBar = (props) => {
           </li>
           <li className="my-6">
             <div onClick={() => selectedMenu('membership')}>Membership</div>
-          </li>
-          <li className="my-6">
-            <div>News and Updates</div>
           </li>
           <li className="my-6">
             <div onClick={() => selectedMenu('faq')}>FAQ</div>

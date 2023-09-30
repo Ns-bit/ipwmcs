@@ -1,6 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --light: 249 249 249;
+    --blue: 60 145 230;
+    --light-blue: 207 232 255;
+    --grey: 238 238 238;
+    --dark-grey: 170 170 170;
+    --dark: 52 46 55;
+    --red: 219 80 74;
+    --yellow: 255 206 38;
+    --light-yellow: 255 242 198;
+    --orange: 253 114 56;
+    --light-orange: 255 224 211;
+  }
+  :root[class='dark'] {
+    --light: 12 12 30;
+    --grey: 6 7 20;
+    --dark: 251 251 251
+  }
+}
 
 @layer utilities {
   .grow-underline {
