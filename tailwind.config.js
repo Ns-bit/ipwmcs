@@ -15,7 +15,7 @@ module.exports = {
         tyellow: 'rgb(var(--yellow) / <alpha-value>)',
         tlightyellow: 'rgb(var(--light-yellow) / <alpha-value>)',
         torange: 'rgb(var(--orange) / <alpha-value>)',
-        tlightrange: 'rgb(var(--light-orange) / <alpha-value>)',
+        tlightorange: 'rgb(var(--light-orange) / <alpha-value>)',
       },
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
