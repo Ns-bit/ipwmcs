@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { FaHandshake, FaCloudDownloadAlt } from 'react-icons/fa';
 import { FaMoneyBillTransfer } from 'react-icons/fa6';
-import { FcMoneyTransfer, FcCurrencyExchange } from 'react-icons/fc';
-import { BiSolidDashboard, BiSolidOffer, BiLogOutCircle } from 'react-icons/bi';
+import {
+  FcMoneyTransfer,
+  FcCurrencyExchange,
+  FcFilledFilter,
+} from 'react-icons/fc';
+import {
+  BiSolidDashboard,
+  BiSolidOffer,
+  BiLogOutCircle,
+  BiSearch,
+} from 'react-icons/bi';
 import { AiOutlineStock } from 'react-icons/ai';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { IoMenuSharp } from 'react-icons/io5';
@@ -30,6 +39,20 @@ const Dashboard = () => {
   function makeActive(index) {
     setActive(index);
   }
+
+  const getStatusColor = (status) => {
+    switch (status.toLowerCase()) {
+      case 'completed':
+        return 'bg-status-completed';
+      case 'pending':
+        return 'bg-status-pending';
+      case 'processing':
+        return 'bg-status-processing';
+      default:
+        return '';
+    }
+  };
+
   return (
     <>
       {/* SIDEBAR */}
@@ -248,7 +271,7 @@ const Dashboard = () => {
           </div>
         </nav>
         {/* NAVBAR END */}
-        <main className="w-full py-9 px-6 font-poppins max-h-[calc(100vh-56px)] overflow-y-auto bg-tgrey">
+        <main className="w-full sticky top-0 left-0 z-[2000] py-9 px-6 font-poppins max-h-[calc(100vh-56px)] overflow-y-auto bg-tgrey">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="text-4xl font-semibold mb-[10px] text-tdark">
               <h1 className="">Dashboard</h1>
@@ -263,7 +286,7 @@ const Dashboard = () => {
               <span>Download your Details</span>
             </a>
           </div>
-          <ul className="grid grid-cols-3 gap-6 mt-9">
+          <ul className="grid lg:grid-cols-3 gap-6 mt-9">
             <li className="p-6 bg-tlight rounded-[20px] flex items-center gap-6">
               <div className="w-20 h-20 rounded-[10px] text-[36px] flex justify-center items-center bg-tlightblue text-tblue">
                 <FcCurrencyExchange />
@@ -292,6 +315,91 @@ const Dashboard = () => {
               </span>
             </li>
           </ul>
+          <div className="flex flex-wrap gap-6 mt-6 w-full text-tdark">
+            <div className=" grow basis-[500px] rounded-[20px] bg-tlight p-6 overflow-x-auto">
+              <div className="flex items-center gap-4 mb-6">
+                <h3 className="mr-auto text-[24px] font-semibold">
+                  Summary of the Year
+                </h3>
+                <BiSearch className="cursor-pointer" />
+                <FcFilledFilter className="cursor-pointer" />
+              </div>
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
+                      Month
+                    </th>
+                    <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
+                      Monthly Shares
+                    </th>
+                    <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
+                      Drift Savings
+                    </th>
+                    <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
+                      Loan Status
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>January</td>
+                    <td className='py-4 px-0'>60,000</td>
+                    <td className='py-4 px-0'>20,000,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>February</td>
+                    <td className='py-4 px-0'>30,000</td>
+                    <td className='py-4 px-0'>11,000,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>March</td>
+                    <td className='py-4 px-0'>60,000</td>
+                    <td className='py-4 px-0'>150,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>April</td>
+                    <td className='py-4 px-0'>20,000</td>
+                    <td className='py-4 px-0'>500,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('pending')}`}>pending</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>May</td>
+                    <td className='py-4 px-0'>60,000</td>
+                    <td className='py-4 px-0'>800,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('processing')}`}>processing</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>June</td>
+                    <td className='py-4 px-0'>80,000</td>
+                    <td className='py-4 px-0'>11,000,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('pending')}`}>pending</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>July</td>
+                    <td className='py-4 px-0'>30,000</td>
+                    <td className='py-4 px-0'>900,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>August</td>
+                    <td className='py-4 px-0'>60,000</td>
+                    <td className='py-4 px-0'>50,000,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('pending')}`}>pending</span></td>
+                  </tr>
+                  <tr className='hover:bg-tgrey'>
+                    <td className='py-4 px-0'>September</td>
+                    <td className='py-4 px-0'>60,000</td>
+                    <td className='py-4 px-0'>900,000</td>
+                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('processing')}`}>processing</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </main>
       </section>
     </>

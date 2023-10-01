@@ -59,3 +59,14 @@
   @apply font-serif text-[1.875rem] leading-[2.25rem] pb-8 mx-auto
 }
 
+.bg-status-completed {
+  @apply bg-tblue
+}
+
+.bg-status-pending {
+  @apply bg-torange
+}
+
+.bg-status-processing {
+  @apply bg-tyellow
+}
