@@ -23,6 +23,9 @@
     --dark: 251 251 251
   }
 }
+.Dashboard {
+  @apply overflow-x-hidden
+}
 
 @layer utilities {
   .grow-underline {

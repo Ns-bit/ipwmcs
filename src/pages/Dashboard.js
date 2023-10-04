@@ -4,26 +4,28 @@ import { FaMoneyBillTransfer } from 'react-icons/fa6';
 import {
   FcMoneyTransfer,
   FcCurrencyExchange,
-  FcFilledFilter,
+  FcFilledFilter
 } from 'react-icons/fc';
 import {
   BiSolidDashboard,
   BiSolidOffer,
   BiLogOutCircle,
-  BiSearch,
+  BiSearch
 } from 'react-icons/bi';
 import { AiOutlineStock } from 'react-icons/ai';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { IoMenuSharp } from 'react-icons/io5';
 import { IoMdNotifications } from 'react-icons/io';
 import { IconContext } from 'react-icons';
+import Footer from '../components/Footer';
 
 const Dashboard = () => {
   const [checked, setChecked] = useState(false);
   const [active, setActive] = useState(0);
-  const [showSideBar, setShowSideBar] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(true);
   const [theme, setTheme] = useState('light');
 
+  const currentYear = new Date().getFullYear();
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -57,13 +59,19 @@ const Dashboard = () => {
     <>
       {/* SIDEBAR */}
       <section
-        className={`fixed top-0 left-0 w-[280px] h-full bg-tlight z-[1000] font-lato transition duration-300 ease-in-out overflow-x-hidden`}
+        className={`fixed overflow-x-hidden top-0 left-0  h-full bg-tlight z-[1000] font-lato transition duration-300 ease-in-out  ${
+          showSideBar ? 'w-[60px]' : 'w-[200px] md:w-[280px]'
+        }`}
       >
         <a
           href="@"
           className="text-[24px] font-bold h-14 flex items-center text-tblue sticky justify-center top-0 left-0 bg-tlight z-[500] pb-5 box-content"
         >
-          <div className="min-w-[60px] flex justify-center">
+          <div
+            className={`min-w-[60px] justify-center ${
+              showSideBar ? 'hidden' : 'flex'
+            }`}
+          >
             <div className="flex items-center justify-center cursor-pointer">
               <IconContext.Provider
                 value={{ color: 'rgb(194 65 12)', size: '40px' }}
@@ -89,8 +97,8 @@ const Dashboard = () => {
                 active === 0 ? 'text-tblue' : 'text-tdark'
               } ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -111,8 +119,8 @@ const Dashboard = () => {
                 active === 1 ? 'text-tblue' : 'text-tdark'
               } ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -133,8 +141,8 @@ const Dashboard = () => {
                 active === 2 ? 'text-tblue' : 'text-tdark'
               } ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -155,8 +163,8 @@ const Dashboard = () => {
                 active === 3 ? 'text-tblue' : 'text-tdark'
               } ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -177,8 +185,8 @@ const Dashboard = () => {
                 active === 4 ? 'text-tblue' : 'text-tdark'
               } ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -199,8 +207,8 @@ const Dashboard = () => {
                 active === 5 ? 'text-tblue' : 'text-tdark'
               } ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -215,8 +223,8 @@ const Dashboard = () => {
             <div
               className={`cursor-pointer h-full flex items-center text-base text-tred whitespace-nowrap overflow-x-hidden ${
                 showSideBar
-                  ? 'w-[calc(48px-(4px*2))] transition-[width] duration-300 ease-in-out'
-                  : 'w-full'
+                  ? 'w-[calc(48px-(4px*2))] transition duration-300 ease-in-out'
+                  : 'w-full transition-[width] duration-300 ease-in-out'
               }`}
             >
               <div className="min-w-[calc(60px-((4px+6px)*2))] flex justify-center">
@@ -231,8 +239,10 @@ const Dashboard = () => {
 
       {/* CONTENT */}
       <section
-        className={`relative w-[calc(100%-280px)] left-[280px] transition duration-300 ease-in-out ${
-          showSideBar && 'w-[calc(100%-60px)] left-[60px]'
+        className={`relative overflow-x-hidden ${
+          showSideBar
+            ? 'w-[calc(100%-60px)] left-[60px] transition duration-300 ease-in-out'
+            : 'w-[calc(100%-60px)] md:w-[calc(100%-280px)] left-[200px] md:left-[280px] transition duration-300 ease-in-out'
         }`}
       >
         {/* NAVBAR */}
@@ -243,9 +253,13 @@ const Dashboard = () => {
           >
             <IoMenuSharp />
           </div>
-          <span className="text-base transition duration-300 cursor-default ease-in-out text-tdark hover:text-tblue">
+          <span className="text-base hidden md:flex transition duration-300 cursor-default ease-in-out text-tdark hover:text-tblue">
             Welcome Mr. John Doe
           </span>
+          <div class="flex md:hidden items-center justify-center h-9 w-9 rounded-[50%] text-tdark hover:text-tblue bg-tdarkgrey">
+            <span>JD</span>
+          </div>
+
           <input id="toggler" type="checkbox" hidden />
           <label
             onClick={handleThemeSwitch}
@@ -271,6 +285,7 @@ const Dashboard = () => {
           </div>
         </nav>
         {/* NAVBAR END */}
+        {/* MAIN */}
         <main className="w-full sticky top-0 left-0 z-[2000] py-9 px-6 font-poppins max-h-[calc(100vh-56px)] overflow-y-auto bg-tgrey">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="text-4xl font-semibold mb-[10px] text-tdark">
@@ -286,7 +301,7 @@ const Dashboard = () => {
               <span>Download your Details</span>
             </a>
           </div>
-          <ul className="grid lg:grid-cols-3 gap-6 mt-9">
+          <ul className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-9">
             <li className="p-6 bg-tlight rounded-[20px] flex items-center gap-6">
               <div className="w-20 h-20 rounded-[10px] text-[36px] flex justify-center items-center bg-tlightblue text-tblue">
                 <FcCurrencyExchange />
@@ -317,14 +332,14 @@ const Dashboard = () => {
           </ul>
           <div className="flex flex-wrap gap-6 mt-6 w-full text-tdark">
             <div className=" grow basis-[500px] rounded-[20px] bg-tlight p-6 overflow-x-auto">
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex min-w-[420px] md:min-w-0 items-center gap-4 mb-6">
                 <h3 className="mr-auto text-[24px] font-semibold">
-                  Summary of the Year
+                  {currentYear} Summary
                 </h3>
                 <BiSearch className="cursor-pointer" />
                 <FcFilledFilter className="cursor-pointer" />
               </div>
-              <table className="w-full border-collapse">
+              <table className="min-w-[500px] md:w-full border-collapse">
                 <thead>
                   <tr>
                     <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
@@ -336,72 +351,147 @@ const Dashboard = () => {
                     <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
                       Drift Savings
                     </th>
-                    <th className="pb-3 text-[13px] text-left border-b border-solid border-tgrey">
+                    <th className="pb-3 text-[13px] text-center md:text-left border-b border-solid border-tgrey">
                       Loan Status
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>January</td>
-                    <td className='py-4 px-0'>60,000</td>
-                    <td className='py-4 px-0'>20,000,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">January</td>
+                    <td className="py-4 px-0">60,000</td>
+                    <td className="py-4 px-0">20,000,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'completed'
+                        )}`}
+                      >
+                        completed
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>February</td>
-                    <td className='py-4 px-0'>30,000</td>
-                    <td className='py-4 px-0'>11,000,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">February</td>
+                    <td className="py-4 px-0">30,000</td>
+                    <td className="py-4 px-0">11,000,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'completed'
+                        )}`}
+                      >
+                        completed
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>March</td>
-                    <td className='py-4 px-0'>60,000</td>
-                    <td className='py-4 px-0'>150,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">March</td>
+                    <td className="py-4 px-0">60,000</td>
+                    <td className="py-4 px-0">150,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'completed'
+                        )}`}
+                      >
+                        completed
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>April</td>
-                    <td className='py-4 px-0'>20,000</td>
-                    <td className='py-4 px-0'>500,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('pending')}`}>pending</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">April</td>
+                    <td className="py-4 px-0">20,000</td>
+                    <td className="py-4 px-0">500,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'pending'
+                        )}`}
+                      >
+                        pending
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>May</td>
-                    <td className='py-4 px-0'>60,000</td>
-                    <td className='py-4 px-0'>800,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('processing')}`}>processing</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">May</td>
+                    <td className="py-4 px-0">60,000</td>
+                    <td className="py-4 px-0">800,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'processing'
+                        )}`}
+                      >
+                        processing
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>June</td>
-                    <td className='py-4 px-0'>80,000</td>
-                    <td className='py-4 px-0'>11,000,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('pending')}`}>pending</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">June</td>
+                    <td className="py-4 px-0">80,000</td>
+                    <td className="py-4 px-0">11,000,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'pending'
+                        )}`}
+                      >
+                        pending
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>July</td>
-                    <td className='py-4 px-0'>30,000</td>
-                    <td className='py-4 px-0'>900,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('completed')}`}>completed</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">July</td>
+                    <td className="py-4 px-0">30,000</td>
+                    <td className="py-4 px-0">900,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'completed'
+                        )}`}
+                      >
+                        completed
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>August</td>
-                    <td className='py-4 px-0'>60,000</td>
-                    <td className='py-4 px-0'>50,000,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('pending')}`}>pending</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">August</td>
+                    <td className="py-4 px-0">60,000</td>
+                    <td className="py-4 px-0">50,000,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'pending'
+                        )}`}
+                      >
+                        pending
+                      </span>
+                    </td>
                   </tr>
-                  <tr className='hover:bg-tgrey'>
-                    <td className='py-4 px-0'>September</td>
-                    <td className='py-4 px-0'>60,000</td>
-                    <td className='py-4 px-0'>900,000</td>
-                    <td className='py-4 px-0'><span className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor('processing')}`}>processing</span></td>
+                  <tr className="hover:bg-tgrey">
+                    <td className="py-4 px-0">September</td>
+                    <td className="py-4 px-0">60,000</td>
+                    <td className="py-4 px-0">900,000</td>
+                    <td className="py-4 px-0">
+                      <span
+                        className={`text-[14px] py-[6px] px-4 text-tlight rounded-[20px] font-bold ${getStatusColor(
+                          'processing'
+                        )}`}
+                      >
+                        processing
+                      </span>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </main>
+        {/* MAIN END */}
       </section>
+      {/* CONTENT END */}
+      <Footer />
     </>
   );
 };
